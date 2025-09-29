@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrainWave.APP.ViewModels"
+             x:Class="BrainWave.APP.Views.TaskDetailPage"
+             Title="Task Details"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <ContentPage.BindingContext>
+        <vm:TaskDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   HasShadow="True">
+                <Grid ColumnDefinitions="Auto,*,Auto">
+                    <Button Grid.Column="0"
+                            Text="← Back" 
+                            Command="{Binding BackCommand}" 
+                            BackgroundColor="Transparent" 
+                            TextColor="White" 
+                            FontSize="16" 
+                            FontAttributes="Bold" 
+                            Padding="0" />
+                    
+                    <VerticalStackLayout Grid.Column="1" Spacing="8" HorizontalOptions="Center">
+                        <Label Text="📋 Task Details" 
+                               FontSize="24" 
+                               FontAttributes="Bold" 
+                               TextColor="White" 
+                               HorizontalOptions="Center" />
+                        <Label Text="{Binding Task.Title}" 
+                               FontSize="18" 
+                               TextColor="White" 
+                               HorizontalOptions="Center" 
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    
+                    <Label Grid.Column="2" Text="" /> <!-- Spacer for symmetry -->
+                </Grid>
+            </Frame>
+
+            <!-- Task Information -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    
+                    <!-- Title -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Title:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding Task.Title}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditTitle_Clicked" />
+                    </Grid>
+
+                    <!-- Description -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Description:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding Task.Description}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditDescription_Clicked" />
+                    </Grid>
+
+                    <!-- Due Date -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Due Date:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding Task.DueDate, StringFormat='{0:MMM dd, yyyy}'}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditDueDate_Clicked" />
+                    </Grid>
+
+                    <!-- Priority -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Priority:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding Task.Priority}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditPriority_Clicked" />
+                    </Grid>
+
+                    <!-- Status -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Status:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding Task.Status}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditStatus_Clicked" />
+                    </Grid>
+
+                    <!-- Task Metadata -->
+                    <Frame BackgroundColor="{AppThemeBinding Light=#E8F4FD, Dark=#1A3A5C}" 
+                           CornerRadius="12" 
+                           Padding="16" 
+                           HasShadow="False">
+                        <VerticalStackLayout Spacing="8">
+                            <Label Text="Task Information" 
+                                   FontSize="14" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{AppThemeBinding Light=#2C5AA0, Dark=#90CAF9}" />
+                            <Label Text="{Binding TaskInfo}" 
+                                   FontSize="12" 
+                                   TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8">
+                <Button Grid.Column="0"
+                        Text="💾 Confirm Update" 
+                        BackgroundColor="{AppThemeBinding Light=#4CAF50, Dark=#388E3C}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="14" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50"
+                        Clicked="ConfirmUpdate_Clicked" />
+                
+                <Button Grid.Column="1"
+                        Text="✅ Mark Complete" 
+                        BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="14" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50"
+                        Clicked="MarkComplete_Clicked"
+                        IsVisible="{Binding Task.Status, Converter={StaticResource StatusToVisibilityConverter}, ConverterParameter=In Progress}" />
+                
+                <Button Grid.Column="2"
+                        Text="🗑️ Delete" 
+                        BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="14" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50"
+                        Clicked="DeleteTask_Clicked" />
+            </Grid>
+
+            <!-- Quick Actions -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#E8F5E8, Dark=#1A3A1A}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Quick Actions" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#2C5A2C, Dark=#90CA90}" />
+                    
+                    <Button Text="Mark as Completed" 
+                            Command="{Binding MarkCompletedCommand}" 
+                            BackgroundColor="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="14" 
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
+                            IsVisible="{Binding CanMarkCompleted}" />
+                    
+                    <Button Text="Mark as In Progress" 
+                            Command="{Binding MarkInProgressCommand}" 
+                            BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1565C0}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="14" 
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}"
+                            IsVisible="{Binding CanMarkInProgress}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}" 
+                              IsRunning="{Binding IsBusy}" 
+                              Color="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" />
+
+            <Label Text="{Binding ErrorMessage}" 
+                   TextColor="Red" 
+                   HorizontalOptions="Center"
+                   FontSize="14" 
+                   IsVisible="{Binding ErrorMessage, Converter={StaticResource StringToBoolConverter}}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainWave.APP.Views.AdminDashboardPage"
+             Title="Admin Dashboard"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Admin Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#DC3545, Dark=#B71C1C}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   Margin="0,0,0,20">
+                <VerticalStackLayout>
+                    <Label Text="🛡️ Admin Panel" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                    <Label Text="System Administration &amp; User Management" 
+                           FontSize="14" 
+                           TextColor="White" 
+                           Opacity="0.9" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- User Statistics -->
+            <Label Text="👥 User Statistics" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Frame Grid.Row="0" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#E8F5E8, Dark=#1B5E20}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Total Users" FontSize="12" TextColor="{AppThemeBinding Light=#2E7D32, Dark=#A5D6A7}" />
+                        <Label Text="{Binding TotalUsers}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#1B5E20, Dark=#C8E6C9}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Students" FontSize="12" TextColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}" />
+                        <Label Text="{Binding StudentCount}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#0D47A1, Dark=#BBDEFB}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="1" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#F3E5F5, Dark=#4A148C}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Professionals" FontSize="12" TextColor="{AppThemeBinding Light=#7B1FA2, Dark=#CE93D8}" />
+                        <Label Text="{Binding ProfessionalCount}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#4A148C, Dark=#E1BEE7}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+
+            </Grid>
+
+            <!-- Task Statistics -->
+            <Label Text="📋 Task Statistics" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Frame Grid.Row="0" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#E8F5E8, Dark=#1B5E20}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Total Tasks" FontSize="12" TextColor="{AppThemeBinding Light=#2E7D32, Dark=#A5D6A7}" />
+                        <Label Text="{Binding TotalTasks}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#1B5E20, Dark=#C8E6C9}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Completed" FontSize="12" TextColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}" />
+                        <Label Text="{Binding CompletedTasks}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#0D47A1, Dark=#BBDEFB}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="1" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#FFF3E0, Dark=#E65100}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="In Progress" FontSize="12" TextColor="{AppThemeBinding Light=#F57C00, Dark=#FFB74D}" />
+                        <Label Text="{Binding InProgressTasks}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#E65100, Dark=#FFCC02}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+
+            </Grid>
+
+            <!-- System Statistics -->
+            <Label Text="📊 System Statistics" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Frame Grid.Row="0" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#F3E5F5, Dark=#4A148C}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Reminders" FontSize="12" TextColor="{AppThemeBinding Light=#7B1FA2, Dark=#CE93D8}" />
+                        <Label Text="{Binding TotalReminders}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#4A148C, Dark=#E1BEE7}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="0" Grid.Column="1" 
+                       BackgroundColor="{AppThemeBinding Light=#E1F5FE, Dark=#01579B}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Collaborations" FontSize="12" TextColor="{AppThemeBinding Light=#0277BD, Dark=#81D4FA}" />
+                        <Label Text="{Binding TotalCollaborations}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#01579B, Dark=#B3E5FC}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="1" Grid.Column="0" 
+                       BackgroundColor="{AppThemeBinding Light=#E8F5E8, Dark=#1B5E20}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Exports" FontSize="12" TextColor="{AppThemeBinding Light=#2E7D32, Dark=#A5D6A7}" />
+                        <Label Text="{Binding TotalExports}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#1B5E20, Dark=#C8E6C9}" />
+                    </VerticalStackLayout>
+                </Frame>
+                
+                <Frame Grid.Row="1" Grid.Column="1" 
+                       BackgroundColor="{AppThemeBinding Light=#FFF8E1, Dark=#E65100}" 
+                       CornerRadius="12" 
+                       Padding="16">
+                    <VerticalStackLayout>
+                        <Label Text="Badges" FontSize="12" TextColor="{AppThemeBinding Light=#F57C00, Dark=#FFB74D}" />
+                        <Label Text="{Binding TotalBadges}" FontSize="24" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#E65100, Dark=#FFCC02}" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Top Users Section -->
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <Label Grid.Column="0" 
+                       Text="🏆 Top Engaging Users" 
+                       FontSize="18" 
+                       FontAttributes="Bold" 
+                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                       VerticalOptions="Center" />
+                <Button Grid.Column="1" 
+                        Text="View All Users" 
+                        BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                        TextColor="White" 
+                        CornerRadius="8" 
+                        FontSize="12"
+                        Clicked="ViewAllUsers_Clicked" />
+            </Grid>
+            <CollectionView ItemsSource="{Binding TopUsers}" HeightRequest="150">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                               CornerRadius="12" 
+                               Padding="16" 
+                               Margin="0,4"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                                <!-- Rank -->
+                                <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" 
+                                       BackgroundColor="{AppThemeBinding Light=#FFD700, Dark=#FFA000}" 
+                                       CornerRadius="20" 
+                                       Padding="0" 
+                                       WidthRequest="40" 
+                                       HeightRequest="40" 
+                                       HasShadow="False">
+                                    <Label Text="🏆" 
+                                           FontSize="20" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Center" />
+                                </Frame>
+
+                                <!-- User Info -->
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="4" Margin="12,0,0,0">
+                                    <Label Text="{Binding FullName}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                                    <Label Text="{Binding Email}" 
+                                           FontSize="12" 
+                                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                    <Frame BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}" 
+                                           CornerRadius="8" 
+                                           Padding="6,2" 
+                                           HasShadow="False">
+                                        <Label Text="{Binding Role}" 
+                                               TextColor="White" 
+                                               FontSize="10" 
+                                               FontAttributes="Bold" />
+                                    </Frame>
+                                </VerticalStackLayout>
+
+                                <!-- Stats -->
+                                <VerticalStackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" 
+                                                     Spacing="4" 
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding CompletedTasks, StringFormat='{0} completed'}" 
+                                           FontSize="12" 
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#4CAF50, Dark=#81C784}" />
+                                    <Label Text="{Binding TotalTasks, StringFormat='{0} total'}" 
+                                           FontSize="12" 
+                                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                    <Label Text="{Binding CompletionRate, StringFormat='{0:F1}%'}" 
+                                           FontSize="14" 
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#2196F3, Dark=#64B5F6}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Admin Actions -->
+            <Label Text="Administrative Actions" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto" ColumnSpacing="12" RowSpacing="12">
+                <Button Grid.Row="0" Grid.Column="0" 
+                        Text="👥 Manage Users" 
+                        BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="ManageUsers_Clicked" />
+                <Button Grid.Row="0" Grid.Column="1" 
+                        Text="🔑 Update Admin Credentials" 
+                        BackgroundColor="{AppThemeBinding Light=#9C27B0, Dark=#7B1FA2}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="UpdateAdminCredentials_Clicked" />
+            </Grid>
+
+            <!-- Quick Actions -->
+            <Label Text="Quick Actions" FontSize="18" FontAttributes="Bold" TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Button Grid.Row="0" Grid.Column="0" 
+                        Text="➕ Add User" 
+                        BackgroundColor="{AppThemeBinding Light=#4CAF50, Dark=#388E3C}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="AddUser_Clicked" />
+                <Button Grid.Row="0" Grid.Column="1" 
+                        Text="🔄 Refresh Data" 
+                        BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="RefreshData_Clicked" />
+                <Button Grid.Row="1" Grid.Column="0" 
+                        Text="🚪 Logout" 
+                        BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="Logout_Clicked" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

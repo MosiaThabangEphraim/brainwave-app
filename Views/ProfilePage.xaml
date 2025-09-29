@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainWave.APP.Views.ProfilePage"
+             Title="Profile"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Profile Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   Margin="0,0,0,20">
+                <VerticalStackLayout>
+                    <Label Text="👤 My Profile" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                    <Label Text="Manage your account settings" 
+                           FontSize="14" 
+                           TextColor="White" 
+                           Opacity="0.9" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- Personal Information -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Personal Information" 
+                           FontSize="16" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+
+                    <!-- Update Details Button -->
+                    <Button Text="✏️ Update Details" 
+                            BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                            TextColor="White" 
+                            CornerRadius="12" 
+                            FontSize="16" 
+                            FontAttributes="Bold" 
+                            HeightRequest="50"
+                            Clicked="UpdateDetails_Clicked" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+
+
+            <!-- Action Buttons -->
+            <Grid>
+                <!-- When Save Changes is visible (3 buttons) -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="8" IsVisible="{Binding HasPendingChanges}">
+                    <Button Grid.Column="0" 
+                            Text="💾 Save Changes" 
+                            BackgroundColor="{AppThemeBinding Light=#4CAF50, Dark=#388E3C}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="12" 
+                            FontAttributes="Bold" 
+                            Padding="8,6" 
+                            Clicked="Save_Clicked"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Grid.Column="1" 
+                            Text="🔒 Update Password" 
+                            BackgroundColor="{AppThemeBinding Light=#9C27B0, Dark=#7B1FA2}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="12" 
+                            FontAttributes="Bold" 
+                            Padding="8,6" 
+                            Clicked="UpdatePassword_Clicked"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Grid.Column="2" 
+                            Text="🚪 Logout" 
+                            BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="12" 
+                            FontAttributes="Bold" 
+                            Padding="8,6" 
+                            Clicked="Logout_Clicked"
+                            HorizontalOptions="FillAndExpand" />
+                </Grid>
+                
+                <!-- When Save Changes is not visible (2 buttons) -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="8" IsVisible="{Binding HasPendingChanges, Converter={StaticResource InvertedBoolConverter}}">
+                    <Button Grid.Column="0" 
+                            Text="🔒 Update Password" 
+                            BackgroundColor="{AppThemeBinding Light=#9C27B0, Dark=#7B1FA2}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="12" 
+                            FontAttributes="Bold" 
+                            Padding="8,6" 
+                            Clicked="UpdatePassword_Clicked"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Grid.Column="1" 
+                            Text="🚪 Logout" 
+                            BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="12" 
+                            FontAttributes="Bold" 
+                            Padding="8,6" 
+                            Clicked="Logout_Clicked"
+                            HorizontalOptions="FillAndExpand" />
+                </Grid>
+            </Grid>
+
+            <!-- Delete Account -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFEBEE, Dark=#B71C1C}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="🗑️ Delete Account" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#D32F2F, Dark=#FFCDD2}" />
+                    
+                    <Label Text="Permanently delete your account and all associated data. This action cannot be undone!" 
+                           FontSize="14" 
+                           TextColor="{AppThemeBinding Light=#D32F2F, Dark=#FFCDD2}" 
+                           LineBreakMode="WordWrap" />
+                    
+                    <Button Text="Delete My Account" 
+                            BackgroundColor="{AppThemeBinding Light=#D32F2F, Dark=#B71C1C}" 
+                            TextColor="White" 
+                            CornerRadius="8" 
+                            FontSize="14" 
+                            FontAttributes="Bold" 
+                            Padding="12,8" 
+                            Clicked="DeleteAccount_Clicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrainWave.APP.ViewModels"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="BrainWave.APP.Views.CreateTaskPage"
+             Title="Create Task"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <ContentPage.BindingContext>
+        <vm:TasksViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="16">
+            
+            <Label Text="Create New Task" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                   HorizontalOptions="Center" />
+            
+            <!-- Form Fields -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Task Title *" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                    <Entry Text="{Binding Editing.Title}" 
+                           BackgroundColor="Transparent" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                           PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Description (Optional)" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                    <Editor Text="{Binding Editing.Description}" 
+                            BackgroundColor="Transparent" 
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                            PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}"
+                            HeightRequest="80" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Priority *" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                    <Picker x:Name="PriorityPicker"
+                            SelectedItem="{Binding Editing.Priority}"
+                            BackgroundColor="Transparent"
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                            FontSize="14">
+                        <Picker.Items>
+                            <x:String>Low</x:String>
+                            <x:String>Medium</x:String>
+                            <x:String>High</x:String>
+                            <x:String>Critical</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Due Date (Optional)" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                    <DatePicker Date="{Binding Editing.DueDate}" 
+                                BackgroundColor="Transparent" 
+                                TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                FontSize="14"
+                                Format="MMM dd, yyyy"
+                                MinimumDate="{Binding Source={x:Static sys:DateTime.Today}}"
+                                x:Name="DueDatePicker"
+                                DateSelected="DueDatePicker_DateSelected" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                   CornerRadius="12" 
+                   Padding="16" 
+                   HasShadow="False">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Status *" 
+                           FontSize="12" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                    <Picker x:Name="StatusPicker"
+                            SelectedItem="{Binding Editing.Status}"
+                            BackgroundColor="Transparent"
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                            FontSize="14">
+                        <Picker.Items>
+                            <x:String>In Progress</x:String>
+                            <x:String>Completed</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Grid.Column="0"
+                        Text="Create Task" 
+                        Command="{Binding CreateCommand}" 
+                        BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource InvertedBoolConverter}}" />
+                
+                <Button Grid.Column="1"
+                        Text="Cancel" 
+                        Command="{Binding CancelCommand}" 
+                        BackgroundColor="{AppThemeBinding Light=#6C757D, Dark=#495057}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainWave.APP.Views.AdminUserDetailsPage"
+             Title="User Details"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   Margin="0,0,0,20">
+                <VerticalStackLayout>
+                    <Label Text="👤 User Details" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                    <Label Text="View and edit user information" 
+                           FontSize="14" 
+                           TextColor="White" 
+                           Opacity="0.9" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- User Information -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    
+                    <!-- User ID -->
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="User ID:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding User.UserID}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center" />
+                    </Grid>
+
+                    <!-- First Name -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="First Name:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding User.F_Name}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditFirstName_Clicked" />
+                    </Grid>
+
+                    <!-- Last Name -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Last Name:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding User.L_Name}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditLastName_Clicked" />
+                    </Grid>
+
+                    <!-- Email -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Email:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding User.Email}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditEmail_Clicked" />
+                    </Grid>
+
+                    <!-- Role -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Role:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding User.Role}" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditRole_Clicked" />
+                    </Grid>
+
+                    <!-- Password -->
+                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                        <Label Grid.Column="0" 
+                               Text="Password:" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                               VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="••••••••" 
+                               FontSize="16" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" 
+                               VerticalOptions="Center"
+                               BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}"
+                               Padding="8,4"
+                               Margin="0,2" />
+                        <Button Grid.Column="2" 
+                                Text="Edit" 
+                                BackgroundColor="{AppThemeBinding Light=#FF9800, Dark=#F57C00}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                WidthRequest="50" 
+                                HeightRequest="30" 
+                                FontSize="12"
+                                Clicked="EditPassword_Clicked" />
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Grid.Column="0" 
+                        Text="💾 Confirm Update" 
+                        BackgroundColor="{AppThemeBinding Light=#4CAF50, Dark=#388E3C}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="ConfirmUpdate_Clicked" />
+                <Button Grid.Column="1" 
+                        Text="🗑️ Delete User" 
+                        BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontAttributes="Bold"
+                        Clicked="DeleteUser_Clicked" />
+            </Grid>
+
+            <!-- Back Button -->
+            <Button Text="← Back to User Management" 
+                    BackgroundColor="{AppThemeBinding Light=#6C757D, Dark=#495057}" 
+                    TextColor="White" 
+                    CornerRadius="12" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    HeightRequest="50"
+                    Clicked="Back_Clicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

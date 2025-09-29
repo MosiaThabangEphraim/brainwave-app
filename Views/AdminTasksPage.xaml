@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainWave.APP.Views.AdminTasksPage"
+             Title="Admin • Tasks">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="10">
+        <HorizontalStackLayout>
+            <Entry WidthRequest="100" Placeholder="UserID" Text="{Binding UserID}" />
+            <Entry WidthRequest="200" Placeholder="Title" Text="{Binding Title}" />
+            <Entry WidthRequest="140" Placeholder="Status" Text="{Binding Task_Status}" />
+            <Entry WidthRequest="140" Placeholder="Priority" Text="{Binding Priority_Level}" />
+            <Button Text="Search" Clicked="Search_Clicked" />
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItem Text="Delete" BackgroundColor="Red" Invoked="Delete_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="10" ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                <Label Text="{Binding UserName}" />
+                                <Label Text="{Binding Due_Date, StringFormat='Due: {0:yyyy-MM-dd HH:mm}'}" />
+                                <HorizontalStackLayout>
+                                    <Label Text="{Binding Priority_Level}" />
+                                    <Label Text="•" />
+                                    <Label Text="{Binding Task_Status}" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                            <Button Text="Edit" Grid.Column="1" CommandParameter="{Binding .}" Clicked="Edit_Clicked" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="6">
+            <Label Text="Edit Task" FontAttributes="Bold" />
+            <Entry Placeholder="Title" Text="{Binding Editing.Title}" />
+            <Editor Placeholder="Description" HeightRequest="100" Text="{Binding Editing.Description}" />
+            <DatePicker Date="{Binding Editing.Due_Date}" />
+            <Entry Placeholder="Status" Text="{Binding Editing.Task_Status}" />
+            <Entry Placeholder="Priority" Text="{Binding Editing.Priority_Level}" />
+            <Button Text="Save" Clicked="Save_Clicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

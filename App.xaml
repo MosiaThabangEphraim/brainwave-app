@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BrainWave.APP.Converters"
+             x:Class="BrainWave.APP.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <converters:PriorityToColorConverter x:Key="PriorityToColorConverter" />
+            <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+            <converters:BoolToTextColorConverter x:Key="BoolToTextColorConverter" />
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <converters:StringToBoolConverter x:Key="StringToBoolConverter" />
+            <converters:RoleToColorConverter x:Key="RoleToColorConverter" />
+            <converters:StatusToColorConverter x:Key="StatusToColorConverter" />
+            <converters:StatusToVisibilityConverter x:Key="StatusToVisibilityConverter" />
+            <converters:BoolToReminderIconConverter x:Key="BoolToReminderIconConverter" />
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <converters:UtcToLocalTimeConverter x:Key="UtcToLocalTimeConverter" />
+            
+            <Style TargetType="Button">
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Padding" Value="12,8" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="Margin" Value="0,6" />
+            </Style>
+            <Color x:Key="Primary">#2563eb</Color>
+            <Color x:Key="Danger">#ef4444</Color>
+            <Color x:Key="Warning">#f59e0b</Color>
+            <Color x:Key="Success">#10b981</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

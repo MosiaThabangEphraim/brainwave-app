@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrainWave.APP.ViewModels"
+             x:Class="BrainWave.APP.Views.BadgesPage"
+             Title="Badges"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <ContentPage.BindingContext>
+        <vm:BadgesViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <Grid ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="8">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="🏅 My Badges" 
+                               FontSize="24" 
+                               FontAttributes="Bold" 
+                               TextColor="White" 
+                               HorizontalOptions="Center" />
+                        <Label Text="Track your productivity achievements" 
+                               FontSize="14" 
+                               TextColor="White" 
+                               Opacity="0.9"
+                               HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <Button Grid.Column="1"
+                            Text="Check Badges"
+                            BackgroundColor="{AppThemeBinding Light=#FFA500, Dark=#FF8C00}"
+                            TextColor="White"
+                            CornerRadius="8"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            Padding="12,8"
+                            VerticalOptions="Center"
+                            Command="{Binding CheckBadgesCommand}" />
+                    <Button Grid.Column="2"
+                            Text="Refresh"
+                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"
+                            TextColor="{AppThemeBinding Light=#4A90E2, Dark=#4A90E2}"
+                            CornerRadius="8"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            Padding="12,8"
+                            VerticalOptions="Center"
+                            Command="{Binding RefreshCommand}" />
+                    <Button Grid.Column="3"
+                            Text="❓"
+                            BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#FFFFFF}"
+                            TextColor="{AppThemeBinding Light=#4A90E2, Dark=#4A90E2}"
+                            CornerRadius="8"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            Padding="12,8"
+                            VerticalOptions="Center"
+                            Clicked="HelpButton_Clicked" />
+                </Grid>
+            </Frame>
+
+            <!-- Progress Summary -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="📊 Your Progress" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                           HorizontalOptions="Center" />
+                    
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="20" RowSpacing="8">
+                        <Label Grid.Row="0" Grid.Column="0" 
+                               Text="Completed Tasks:" 
+                               FontSize="14" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                        <Label Grid.Row="0" Grid.Column="1" 
+                               Text="{Binding CompletedTasksCount}" 
+                               FontSize="14" 
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#4A90E2, Dark=#4A90E2}"
+                               HorizontalOptions="End" />
+                        
+                        <Label Grid.Row="1" Grid.Column="0" 
+                               Text="Current Badge:" 
+                               FontSize="14" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                        <Label Grid.Row="1" Grid.Column="1" 
+                               Text="{Binding CurrentBadgeName}" 
+                               FontSize="14" 
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#4A90E2, Dark=#4A90E2}"
+                               HorizontalOptions="End" />
+                        
+                        <Label Grid.Row="2" Grid.Column="0" 
+                               Text="Next Badge:" 
+                               FontSize="14" 
+                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                        <Label Grid.Row="2" Grid.Column="1" 
+                               Text="{Binding NextBadgeProgress}" 
+                               FontSize="14" 
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light=#FFA500, Dark=#FFA500}"
+                               HorizontalOptions="End" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Badges Collection -->
+            <Label Text="🏆 All Badges" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                   HorizontalOptions="Center" />
+
+            <CollectionView ItemsSource="{Binding AllBadges}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                               CornerRadius="12" 
+                               Padding="16" 
+                               Margin="0,0,0,12"
+                               HasShadow="True">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                
+                                <!-- Badge Icon -->
+                                <Frame Grid.Column="0" 
+                                       BackgroundColor="{Binding BadgeColor}" 
+                                       CornerRadius="25" 
+                                       WidthRequest="50" 
+                                       HeightRequest="50"
+                                       HasShadow="False">
+                                    <Label Text="{Binding Icon}" 
+                                           FontSize="24" 
+                                           TextColor="White" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Center" />
+                                </Frame>
+                                
+                                <!-- Badge Info -->
+                                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                                    <Label Text="{Binding Description}" 
+                                           FontSize="12" 
+                                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                    <Label Text="{Binding Slogan}" 
+                                           FontSize="11" 
+                                           FontAttributes="Italic"
+                                           TextColor="{AppThemeBinding Light=#4A90E2, Dark=#4A90E2}" />
+                                </VerticalStackLayout>
+                                
+                                <!-- Achievement Status -->
+                                <Frame Grid.Column="2" 
+                                       BackgroundColor="{Binding StatusColor}" 
+                                       CornerRadius="8" 
+                                       Padding="8,4"
+                                       HasShadow="False">
+                                    <Label Text="{Binding StatusText}" 
+                                           FontSize="10" 
+                                           FontAttributes="Bold"
+                                           TextColor="White" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="Center" />
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <!-- Logout Button -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="16" 
+                   Padding="20" 
+                   Margin="0,20,0,0"
+                   HasShadow="True">
+                <Button Text="🚪 Logout" 
+                        Command="{Binding LogoutCommand}" 
+                        BackgroundColor="{AppThemeBinding Light=#FF6B6B, Dark=#CC4444}" 
+                        TextColor="White" 
+                        CornerRadius="12" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" />
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

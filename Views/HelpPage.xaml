@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BrainWave.APP.ViewModels"
+             x:Class="BrainWave.APP.Views.HelpPage"
+             Title="Help"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <ContentPage.BindingContext>
+        <vm:HelpViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout>
+                    <Label Text="❓ Help and Support" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" />
+                    <Label Text="Find answers and get support" 
+                           FontSize="14" 
+                           TextColor="White" 
+                           Opacity="0.9"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- FAQ Section -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="📚 Frequently Asked Questions" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                           HorizontalOptions="Center" />
+                    
+                    <CollectionView ItemsSource="{Binding FaqItems}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                                       CornerRadius="8" 
+                                       Padding="16" 
+                                       Margin="0,0,0,12"
+                                       HasShadow="False">
+                                    <VerticalStackLayout Spacing="8">
+                                        <Label Text="{Binding Question}" 
+                                               FontSize="14" 
+                                               FontAttributes="Bold" 
+                                               TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                                        <Label Text="{Binding Answer}" 
+                                               FontSize="12" 
+                                               TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Contact Us Section -->
+            <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                   CornerRadius="12" 
+                   Padding="20" 
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="16">
+                    <Label Text="📧 Contact Us" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                           HorizontalOptions="Center" />
+                    
+                    <Label Text="Have a question not covered in our FAQ? Send us a message!" 
+                           FontSize="12" 
+                           TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}"
+                           HorizontalOptions="Center" />
+                    
+                    <!-- Contact Email -->
+                    <Frame BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}" 
+                           CornerRadius="8" 
+                           Padding="12" 
+                           Margin="0,0,0,16"
+                           HasShadow="False">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="📧 Contact Email" 
+                                   FontSize="14" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}" 
+                                   HorizontalOptions="Center" />
+                            <Label Text="mybrainwave@outlook.com" 
+                                   FontSize="16" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{AppThemeBinding Light=#1976D2, Dark=#90CAF9}" 
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+                    
+                    <!-- Contact Form -->
+                    <VerticalStackLayout Spacing="12">
+                        <!-- Name Field -->
+                        <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                               CornerRadius="8" 
+                               Padding="12" 
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Name *" 
+                                       FontSize="12" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                <Entry Text="{Binding ContactName}" 
+                                       BackgroundColor="Transparent" 
+                                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                       PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}"
+                                       Placeholder="Enter your full name" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Email Field -->
+                        <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                               CornerRadius="8" 
+                               Padding="12" 
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Email Address *" 
+                                       FontSize="12" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                <Entry Text="{Binding ContactEmail}" 
+                                       BackgroundColor="Transparent" 
+                                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                       PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}"
+                                       Placeholder="Enter your email address"
+                                       Keyboard="Email" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Subject Field -->
+                        <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                               CornerRadius="8" 
+                               Padding="12" 
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Subject *" 
+                                       FontSize="12" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                <Entry Text="{Binding ContactSubject}" 
+                                       BackgroundColor="Transparent" 
+                                       TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                       PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}"
+                                       Placeholder="What is this about?" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Message Field -->
+                        <Frame BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#404040}" 
+                               CornerRadius="8" 
+                               Padding="12" 
+                               HasShadow="False">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Message *" 
+                                       FontSize="12" 
+                                       FontAttributes="Bold" 
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                                <Editor Text="{Binding ContactMessage}" 
+                                        BackgroundColor="Transparent" 
+                                        TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}"
+                                        PlaceholderColor="{AppThemeBinding Light=#999999, Dark=#AAAAAA}"
+                                        Placeholder="Describe your question or issue in detail..."
+                                        HeightRequest="100" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        
+                        <!-- Submit Button -->
+                        <Button Text="Send Message" 
+                                BackgroundColor="{AppThemeBinding Light=#4A90E2, Dark=#2C5AA0}" 
+                                TextColor="White" 
+                                CornerRadius="8" 
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                Clicked="SendMessage_Clicked"
+                                IsEnabled="{Binding IsFormValid}" />
+                        
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

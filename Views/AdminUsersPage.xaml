@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BrainWave.APP.Views.AdminUsersPage"
+             Title="Manage Users"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A1A1A}">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        
+        <!-- Header -->
+        <Frame Grid.Row="0" 
+               BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+               CornerRadius="0" 
+               Padding="20" 
+               Margin="0,0,0,10">
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="👥 User Management" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" />
+                    <Label Text="Manage all system users" 
+                           FontSize="14" 
+                           TextColor="White" 
+                           Opacity="0.9" />
+                </VerticalStackLayout>
+                <Button Grid.Column="1" 
+                        Text="➕ Add User" 
+                        BackgroundColor="Transparent" 
+                        TextColor="White" 
+                        FontSize="14" 
+                        CornerRadius="8" 
+                        BorderColor="White" 
+                        BorderWidth="1"
+                        Clicked="AddUser_Clicked" />
+            </Grid>
+        </Frame>
+
+        <!-- Search and Filter -->
+        <Frame Grid.Row="1" 
+               BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+               CornerRadius="12" 
+               Padding="15" 
+               Margin="10,0,10,10">
+            <VerticalStackLayout Spacing="10">
+                <!-- Search Bar -->
+                <Frame BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}" 
+                       CornerRadius="8" 
+                       Padding="12" 
+                       HasShadow="False">
+                    <Entry Placeholder="Search users..." 
+                           Text="{Binding SearchText}" 
+                           BackgroundColor="Transparent" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                </Frame>
+                
+                <!-- Role Filter -->
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" 
+                           Text="Filter by Role:" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                           VerticalOptions="Center" />
+                    <Picker Grid.Column="1" 
+                            ItemsSource="{Binding RoleOptions}" 
+                            SelectedItem="{Binding SelectedRole}" 
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}" 
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                </Grid>
+                
+                <!-- Sort Options -->
+                <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="10">
+                    <Label Grid.Column="0" 
+                           Text="Sort by:" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                           VerticalOptions="Center" />
+                    <Picker Grid.Column="1" 
+                            ItemsSource="{Binding SortOptions}" 
+                            SelectedItem="{Binding SelectedSortBy}" 
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}" 
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                    <Label Grid.Column="2" 
+                           Text="Order:" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                           VerticalOptions="Center" />
+                    <Picker Grid.Column="3" 
+                            ItemsSource="{Binding SortOrderOptions}" 
+                            SelectedItem="{Binding SelectedSortOrder}" 
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#404040}" 
+                            TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" />
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Users List -->
+        <CollectionView Grid.Row="2" 
+                        x:Name="UsersList" 
+                        ItemsSource="{Binding Users}"
+                        Margin="16,0,16,16">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#2D2D2D}" 
+                           CornerRadius="12" 
+                           Padding="16" 
+                           Margin="0,6"
+                           HasShadow="True">
+                        <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                            
+                            <!-- Profile Picture -->
+                            <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" 
+                                   BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}" 
+                                   CornerRadius="25" 
+                                   Padding="0" 
+                                   WidthRequest="50" 
+                                   HeightRequest="50" 
+                                   HasShadow="False">
+                                <Label Text="👤" 
+                                       FontSize="24" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                            </Frame>
+
+                            <!-- User Info -->
+                            <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="4" Margin="12,0,0,0">
+                                <HorizontalStackLayout Spacing="8">
+                                    <Label Text="{Binding F_Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                                           VerticalOptions="Center" />
+                                    <Label Text="{Binding L_Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="{AppThemeBinding Light=#333333, Dark=#FFFFFF}" 
+                                           VerticalOptions="Center" />
+                                    <Frame BackgroundColor="{Binding Role, Converter={StaticResource RoleToColorConverter}}" 
+                                           CornerRadius="8" 
+                                           Padding="8,4" 
+                                           HasShadow="False">
+                                        <Label Text="{Binding Role}" 
+                                               TextColor="White" 
+                                               FontSize="10" 
+                                               FontAttributes="Bold" />
+                                    </Frame>
+                                </HorizontalStackLayout>
+                                
+                                <Label Text="{Binding Email}" 
+                                       FontSize="14" 
+                                       TextColor="{AppThemeBinding Light=#666666, Dark=#CCCCCC}" />
+                            </VerticalStackLayout>
+
+                            <!-- Action Buttons -->
+                            <VerticalStackLayout Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" 
+                                                 Spacing="4" 
+                                                 VerticalOptions="Center">
+                                <Button Text="View" 
+                                        BackgroundColor="{AppThemeBinding Light=#2196F3, Dark=#1976D2}" 
+                                        TextColor="White" 
+                                        CornerRadius="8" 
+                                        WidthRequest="60" 
+                                        HeightRequest="32" 
+                                        FontSize="12"
+                                        Clicked="ViewUser_Clicked"
+                                        CommandParameter="{Binding .}" />
+                                <Button Text="Delete" 
+                                        BackgroundColor="{AppThemeBinding Light=#F44336, Dark=#D32F2F}" 
+                                        TextColor="White" 
+                                        CornerRadius="8" 
+                                        WidthRequest="60" 
+                                        HeightRequest="32" 
+                                        FontSize="12"
+                                        Clicked="DeleteUser_Clicked"
+                                        CommandParameter="{Binding .}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Back Button -->
+        <Button Grid.Row="3" 
+                Text="← Back to Admin Dashboard" 
+                BackgroundColor="{AppThemeBinding Light=#6C757D, Dark=#495057}" 
+                TextColor="White" 
+                CornerRadius="12" 
+                FontSize="16" 
+                FontAttributes="Bold" 
+                Margin="20" 
+                HeightRequest="50"
+                Clicked="Back_Clicked" />
+
+    </Grid>
+</ContentPage>
