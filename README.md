@@ -1,4 +1,4 @@
-# BrainWave App
+﻿# BrainWave App
 
 BrainWave is a comprehensive cross-platform task management and productivity application built with .NET MAUI. It's designed to help individuals and teams stay organized, productive, and connected through advanced task management, collaboration tools, and intelligent reminders.
 
