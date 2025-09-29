@@ -1,4 +1,4 @@
-﻿# BrainWave App
+# BrainWave App
 
 BrainWave is a comprehensive cross-platform task management and productivity application built with .NET MAUI. It's designed to help individuals and teams stay organized, productive, and connected through advanced task management, collaboration tools, and intelligent reminders.
 
@@ -131,16 +131,16 @@ dotnet run --framework net8.0-windows10.0.19041.0  # Windows
 
 `
 BrainWave.App/
-â”œâ”€â”€ Models/                 # Data models and DTOs for API communication
-â”œâ”€â”€ ViewModels/            # MVVM ViewModels for UI logic
-â”œâ”€â”€ Views/                 # XAML pages and user interface
-â”œâ”€â”€ Services/              # Business logic and API services
-â”œâ”€â”€ Database/              # Database models and entities
-â”œâ”€â”€ Converters/            # XAML value converters for data binding
-â”œâ”€â”€ Behaviors/             # Custom behaviors for UI elements
-â”œâ”€â”€ Platforms/             # Platform-specific implementations
-â”œâ”€â”€ Resources/             # Images, fonts, and static assets
-â””â”€â”€ Constants.cs           # Application-wide constants and configuration
+|-- Models/                 # Data models and DTOs for API communication
+|-- ViewModels/            # MVVM ViewModels for UI logic
+|-- Views/                 # XAML pages and user interface
+|-- Services/              # Business logic and API services
+|-- Database/              # Database models and entities
+|-- Converters/            # XAML value converters for data binding
+|-- Behaviors/             # Custom behaviors for UI elements
+|-- Platforms/             # Platform-specific implementations
+|-- Resources/             # Images, fonts, and static assets
+|-- Constants.cs           # Application-wide constants and configuration
 `
 
 ## Key Services Explained
