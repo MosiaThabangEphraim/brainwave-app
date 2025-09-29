@@ -2,7 +2,7 @@
 
 A comprehensive task management and collaboration application built with .NET MAUI, featuring user authentication, task management, reminders, collaboration tools, and admin dashboard capabilities.
 
-## ðŸš€ Features
+## Features
 
 ### Core Functionality
 - **User Authentication & Registration** - Secure user accounts with password reset functionality
@@ -20,21 +20,21 @@ A comprehensive task management and collaboration application built with .NET MA
 - **Secure Storage** - Encrypted local storage for sensitive data
 - **MVVM Architecture** - Clean separation of concerns with ViewModels
 
-## ðŸ“± Supported Platforms
+## Supported Platforms
 
 - **Android** (API 21+)
 - **iOS** (11.0+)
 - **macOS** (13.1+)
 - **Windows** (10.0.17763.0+)
 
-## ðŸ› ï¸ Prerequisites
+## Prerequisites
 
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with MAUI workload
 - [Android Studio](https://developer.android.com/studio) (for Android development)
 - [Xcode](https://developer.apple.com/xcode/) (for iOS development on macOS)
 
-## ðŸ“¦ Installation & Setup
+## Installation & Setup
 
 ### 1. Clone the Repository
 `ash
@@ -76,7 +76,7 @@ dotnet run --framework net8.0-ios
 dotnet run --framework net8.0-windows10.0.19041.0
 `
 
-## ðŸ—ï¸ Project Structure
+## Project Structure
 
 `
 BrainWave.App/
@@ -92,7 +92,7 @@ BrainWave.App/
 â””â”€â”€ Constants.cs           # Application constants
 `
 
-## ðŸ”§ Key Services
+## Key Services
 
 - **SupabaseService** - Handles all Supabase operations and authentication
 - **AuthenticationService** - User authentication and session management
@@ -101,7 +101,7 @@ BrainWave.App/
 - **NotificationService** - Push notifications
 - **DatabaseService** - Local database operations
 
-## ðŸ“Š Dependencies
+## Dependencies
 
 - **Microsoft.Maui.Controls** - MAUI framework
 - **Supabase** - Backend services
@@ -110,7 +110,7 @@ BrainWave.App/
 - **SendGrid** - Email services
 - **MailKit** - Email functionality
 
-## ðŸš€ Getting Started
+## Getting Started
 
 1. **Register/Login** - Create an account or sign in
 2. **Dashboard** - View your tasks and reminders overview
@@ -119,7 +119,7 @@ BrainWave.App/
 5. **Collaboration** - Invite team members and collaborate
 6. **Profile** - Manage your profile and view achievements
 
-## ðŸ‘¥ Admin Features
+## Admin Features
 
 The app includes a comprehensive admin dashboard with:
 - User management and details
@@ -127,14 +127,14 @@ The app includes a comprehensive admin dashboard with:
 - System analytics and reports
 - User credential management
 
-## ðŸ”’ Security
+## Security
 
 - Password hashing with BCrypt
 - Secure token-based authentication
 - Encrypted local storage
 - HTTPS communication with Supabase
 
-## ðŸ¤ Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (git checkout -b feature/AmazingFeature)
@@ -142,22 +142,22 @@ The app includes a comprehensive admin dashboard with:
 4. Push to the branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
 
-## ðŸ“ License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ðŸ‘¨â€ðŸ’» Author
+## Author
 
 **Mosia Thabang**
 - GitHub: [@MosiaThabangEphraim](https://github.com/MosiaThabangEphraim)
 
-## ðŸ™ Acknowledgments
+## Acknowledgments
 
 - Built with [.NET MAUI](https://docs.microsoft.com/en-us/dotnet/maui/)
 - Backend powered by [Supabase](https://supabase.com/)
 - Icons and assets from [Material Design](https://material.io/)
 
-## ðŸ“ž Support
+## Support
 
 If you have any questions or need help, please:
 - Open an issue on GitHub
