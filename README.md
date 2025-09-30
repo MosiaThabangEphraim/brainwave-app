@@ -252,26 +252,29 @@ The admin dashboard provides comprehensive system management:
 
 ## Contributing
 
-We welcome contributions to BrainWave! Here's how you can help:
+We welcome contributions to BrainWave through testing and feedback! Here's how you can help:
 
-1. **Fork the Repository** - Create your own copy of the project
-2. **Create Feature Branch** - git checkout -b feature/AmazingFeature
-3. **Make Changes** - Implement your improvements or bug fixes
-4. **Test Thoroughly** - Ensure your changes work across all platforms
-5. **Commit Changes** - git commit -m 'Add some AmazingFeature'
-6. **Push to Branch** - git push origin feature/AmazingFeature
-7. **Open Pull Request** - Submit your changes for review
+1. **Test the Application** - Download and test BrainWave on your device
+2. **Provide Feedback** - Share your experience, suggestions, and bug reports
+3. **Report Issues** - Open GitHub issues for any problems you encounter
+4. **Suggest Improvements** - Let us know what features you'd like to see
+5. **Share Your Experience** - Tell us how BrainWave helps with your productivity
+
+### How to Contribute
+
+- **Testing**: Try the app on different platforms and report any issues
+- **Feedback**: Share your thoughts on the user experience and features
+- **Bug Reports**: Use GitHub issues to report problems with detailed descriptions
+- **Feature Requests**: Suggest new features or improvements through GitHub issues
 
 ### Development Guidelines
+
 - Follow C# coding standards and best practices
 - Write comprehensive unit tests for new features
 - Update documentation for any API changes
 - Ensure cross-platform compatibility
 - Test on multiple devices and platforms
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
 
