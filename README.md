@@ -184,49 +184,6 @@ BrainWave.App/
 - **SendGrid** - Email delivery service
 - **MailKit** - Email functionality and SMTP support
 
-## Screenshots
-
-Here are some screenshots showcasing the BrainWave App's key features and user interface:
-
-### User Interface Screenshots
-
-#### Login Screen
-![Login Screen](screenshots/login_screen.png)
-*Clean and modern login interface with options for both User and Admin access*
-
-#### Main Dashboard
-![Dashboard](screenshots/dashboard.png)
-*Comprehensive dashboard showing task statistics, quick actions, and upcoming tasks*
-
-#### Task Management
-![Tasks Page](screenshots/tasks_page.png)
-*Advanced task management with filtering, sorting, and priority indicators*
-
-#### Reminders System
-![Reminders Page](screenshots/reminders_page.png)
-*Smart reminder system with email notifications and scheduling*
-
-#### Achievement System
-![Badges Page](screenshots/badges_page.png)
-*Gamified productivity with badges and progress tracking*
-
-#### User Profile
-![Profile Page](screenshots/profile_page.png)
-*Complete profile management with security settings*
-
-#### Help & Support
-![Help Page](screenshots/help_page.png)
-*Integrated help system with contact form*
-
-### Admin Interface Screenshots
-
-#### Admin Dashboard
-![Admin Dashboard](screenshots/admin_dashboard.png)
-*Comprehensive admin overview with system statistics and user engagement metrics*
-
-#### User Management
-![User Management](screenshots/user_management.png)
-*Advanced user management with filtering, sorting, and administrative controls*
 
 ## Getting Started Guide
 
