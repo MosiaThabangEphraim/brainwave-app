@@ -129,19 +129,42 @@ dotnet run --framework net8.0-windows10.0.19041.0  # Windows
 
 ## Project Structure
 
-`
+```
 BrainWave.App/
-|-- Models/                 # Data models and DTOs for API communication
-|-- ViewModels/            # MVVM ViewModels for UI logic
-|-- Views/                 # XAML pages and user interface
-|-- Services/              # Business logic and API services
-|-- Database/              # Database models and entities
-|-- Converters/            # XAML value converters for data binding
-|-- Behaviors/             # Custom behaviors for UI elements
-|-- Platforms/             # Platform-specific implementations
-|-- Resources/             # Images, fonts, and static assets
-|-- Constants.cs           # Application-wide constants and configuration
-`
+├── Models/                 # Data models and DTOs for API communication
+├── ViewModels/            # MVVM ViewModels for UI logic
+├── Views/                 # XAML pages and user interface
+├── Services/              # Business logic and API services
+├── Database/              # Database models and entities
+├── Converters/            # XAML value converters for data binding
+├── Behaviors/             # Custom behaviors for UI elements
+├── Platforms/             # Platform-specific implementations
+│   ├── Android/           # Android-specific code and resources
+│   ├── iOS/               # iOS-specific code and resources
+│   ├── MacCatalyst/       # macOS-specific code and resources
+│   ├── Windows/           # Windows-specific code and resources
+│   └── Tizen/             # Tizen-specific code and resources
+├── Resources/             # Images, fonts, and static assets
+│   ├── AppIcon/           # Application icons
+│   ├── Fonts/             # Custom fonts
+│   ├── Images/            # Image assets
+│   ├── Raw/               # Raw asset files
+│   ├── Screenshots/       # Application screenshots
+│   ├── Splash/            # Splash screen assets
+│   └── Styles/             # XAML styles and themes
+├── Screenshots/           # Application screenshots and documentation
+├── Constants.cs           # Application-wide constants and configuration
+├── App.xaml               # Main application XAML
+├── App.xaml.cs            # Main application code-behind
+├── AppShell.xaml          # Application shell XAML
+├── AppShell.xaml.cs       # Application shell code-behind
+├── MainPage.xaml          # Main page XAML
+├── MainPage.xaml.cs       # Main page code-behind
+├── MauiProgram.cs         # MAUI application entry point
+├── BrainWave.APP.csproj   # Project file
+├── BrainWave.App.sln      # Solution file
+└── README.md              # Project documentation
+```
 
 ## Key Services Explained
 
