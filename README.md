@@ -88,33 +88,33 @@ Before getting started with BrainWave, ensure you have:
 ## Installation & Setup
 
 ### 1. Clone the Repository
-`ash
+```bash
 git clone https://github.com/MosiaThabangEphraim/brainwave-app.git
 cd brainwave-app
-`
+```
 
 ### 2. Configure Supabase Backend
 1. Create a [Supabase](https://supabase.com) account and new project
 2. Set up your database tables (users, tasks, reminders, collaborations, messages, badges)
 3. Update the Constants.cs file with your Supabase credentials:
-`csharp
+```csharp
 public static class Constants
 {
     public const string SUPABASE_URL = "your-supabase-project-url";
     public const string SUPABASE_ANON_KEY = "your-supabase-anon-key";
 }
-`
+```
 
 ### 3. Configure Email Services (Optional)
 1. Create a [SendGrid](https://sendgrid.com) account
 2. Generate an API key
 3. Update Services/EmailService.cs:
-`csharp
+```csharp
 _apiKey = "your-sendgrid-api-key-here";
-`
+```
 
 ### 4. Build and Run
-`ash
+```bash
 # Restore NuGet packages
 dotnet restore
 
@@ -125,7 +125,7 @@ dotnet build
 dotnet run --framework net8.0-android    # Android
 dotnet run --framework net8.0-ios         # iOS
 dotnet run --framework net8.0-windows10.0.19041.0  # Windows
-`
+```
 
 ## Project Structure
 
@@ -205,7 +205,6 @@ BrainWave.App/
 - **Newtonsoft.Json** - JSON serialization and deserialization
 - **SendGrid** - Email delivery service
 - **MailKit** - Email functionality and SMTP support
-
 
 ## Getting Started Guide
 
@@ -296,7 +295,6 @@ We welcome contributions to BrainWave through testing and feedback! Here's how y
 - Update documentation for any API changes
 - Ensure cross-platform compatibility
 - Test on multiple devices and platforms
-
 
 ## Author
 
