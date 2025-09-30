@@ -353,6 +353,20 @@ namespace BrainWave.APP.ViewModels
                 
                 if (success)
                 {
+                    // Update user role if changed
+                    if (!string.IsNullOrEmpty(collaboration.Role))
+                    {
+                        var currentUser = await _databaseService.GetCurrentUserAsync();
+                        if (currentUser != null)
+                        {
+                            var roleUpdated = await _databaseService.UpdateUserCollaborationRoleAsync(collaboration.CollaborationID, currentUser.userid, collaboration.Role);
+                            if (!roleUpdated)
+                            {
+                                await Shell.Current.DisplayAlert("Warning", "Collaboration details updated, but failed to update your role.", "OK");
+                            }
+                        }
+                    }
+                    
                     await LoadAsync();
                     await Shell.Current.DisplayAlert("Success", "Collaboration updated successfully!", "OK");
                 }

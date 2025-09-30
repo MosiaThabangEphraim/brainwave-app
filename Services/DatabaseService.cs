@@ -1084,23 +1084,19 @@ namespace BrainWave.APP.Services
         {
             try
             {
-                Debug.WriteLine($"=== UPDATING USER COLLABORATION ROLE ===");
+                Debug.WriteLine($"=== DatabaseService: UPDATING USER COLLABORATION ROLE ===");
                 Debug.WriteLine($"Collaboration ID: {collaborationId}");
                 Debug.WriteLine($"User ID: {userId}");
                 Debug.WriteLine($"New Role: '{newRole}'");
 
-                var response = await _supabaseService.Client
-                    .From<UserCollaboration>()
-                    .Where(x => x.collaborationid == collaborationId && x.userid == userId)
-                    .Set(x => x.collaboration_role, newRole)
-                    .Update();
-
-                Debug.WriteLine($"Role update response: {response?.Models?.Count ?? 0} rows affected");
-                return true;
+                var result = await _supabaseService.UpdateUserCollaborationRoleAsync(collaborationId, userId, newRole);
+                
+                Debug.WriteLine($"DatabaseService role update result: {result}");
+                return result;
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error updating user collaboration role: {ex.Message}");
+                Debug.WriteLine($"DatabaseService error updating user collaboration role: {ex.Message}");
                 Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                 return false;
             }

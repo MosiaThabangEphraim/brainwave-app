@@ -277,6 +277,11 @@ namespace BrainWave.APP.ViewModels
                     {
                         await Shell.Current.DisplayAlert("Warning", "Collaboration details updated, but failed to update your role.", "OK");
                     }
+                    else
+                    {
+                        // Refresh collaboration members to show updated role
+                        await LoadCollaborationMembersAsync();
+                    }
                 }
 
                 HasPendingChanges = false;

@@ -783,6 +783,32 @@ namespace BrainWave.APP.Services
             }
         }
 
+        public async Task<bool> UpdateUserCollaborationRoleAsync(int collaborationId, int userId, string newRole)
+        {
+            try
+            {
+                System.Diagnostics.Debug.WriteLine($"=== SupabaseService: UPDATING USER COLLABORATION ROLE ===");
+                System.Diagnostics.Debug.WriteLine($"Collaboration ID: {collaborationId}");
+                System.Diagnostics.Debug.WriteLine($"User ID: {userId}");
+                System.Diagnostics.Debug.WriteLine($"New Role: '{newRole}'");
+
+                var response = await _supabase
+                    .From<Database.UserCollaboration>()
+                    .Where(x => x.collaborationid == collaborationId && x.userid == userId)
+                    .Set(x => x.collaboration_role, newRole)
+                    .Update();
+
+                System.Diagnostics.Debug.WriteLine($"SupabaseService role update response: {response?.Models?.Count ?? 0} rows affected");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"SupabaseService error updating user collaboration role: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                return false;
+            }
+        }
+
         // Export Management
         public async Task<bool> CreateExportAsync(Database.Export export)
         {
