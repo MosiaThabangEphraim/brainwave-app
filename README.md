@@ -149,7 +149,6 @@ BrainWave.App/
 │   ├── Fonts/             # Custom fonts
 │   ├── Images/            # Image assets
 │   ├── Raw/               # Raw asset files
-│   ├── Screenshots/       # Application screenshots
 │   ├── Splash/            # Splash screen assets
 │   └── Styles/             # XAML styles and themes
 ├── Screenshots/           # Application screenshots and documentation
